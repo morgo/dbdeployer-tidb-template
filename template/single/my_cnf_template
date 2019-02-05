@@ -8,6 +8,8 @@ prompt='{{.Prompt}} [\h:{{.Port}}] {\u} (\d) > '
 [client]
 user               = root
 password           = 
-port               = 4000
+port               = {{.Port}}
 host               = 127.0.0.1
 
+[mysqld]
+# options here will be ignored.  See tidb.toml
