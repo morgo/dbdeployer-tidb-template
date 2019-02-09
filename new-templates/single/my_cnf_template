@@ -6,8 +6,8 @@ prompt='{{.Prompt}} [\h:{{.Port}}] {\u} (\d) > '
 #
 
 [client]
-user               = root
-password           = 
+user               = {{.DbUser}} 
+password           = {{.DbPassword}} 
 port               = {{.Port}}
 host               = 127.0.0.1
 
