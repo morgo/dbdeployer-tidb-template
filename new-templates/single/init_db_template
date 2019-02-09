@@ -11,7 +11,7 @@ cat << EOF > $SBDIR/tidb.toml
 # TiDB Configuration.
 
 # TiDB server host.
-host = "0.0.0.0"
+host = "127.0.0.1"
 
 # tidb server advertise IP.
 advertise-address = ""
@@ -26,7 +26,7 @@ store = "mocktikv"
 path = "$DATADIR"
 
 # The socket file to use for connection.
-socket = ""
+socket = "{{.GlobalTmpDir}}/mysql_sandbox{{.Port}}.sock"
 
 # Run ddl worker on this tidb-server.
 run-ddl = true

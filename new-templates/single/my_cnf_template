@@ -9,7 +9,7 @@ prompt='{{.Prompt}} [\h:{{.Port}}] {\u} (\d) > '
 user               = {{.DbUser}} 
 password           = {{.DbPassword}} 
 port               = {{.Port}}
-host               = 127.0.0.1
+socket						 = {{.GlobalTmpDir}}/mysql_sandbox{{.Port}}.sock
 
 [mysqld]
 # options here will be ignored.  See tidb.toml
