@@ -6,28 +6,10 @@ prompt='{{.Prompt}} [\h:{{.Port}}] {\u} (\d) > '
 #
 
 [client]
-user               = {{.DbUser}}
-password           = {{.DbPassword}}
+user               = root
+password           = 
 port               = {{.Port}}
-socket             = {{.GlobalTmpDir}}/mysql_sandbox{{.Port}}.sock
+host               = 127.0.0.1
 
 [mysqld]
-user               = {{.OsUser}}
-port               = {{.Port}}
-socket             = {{.GlobalTmpDir}}/mysql_sandbox{{.Port}}.sock
-basedir            = {{.Basedir}}
-datadir            = {{.Datadir}}
-tmpdir             = {{.Tmpdir}}
-pid-file           = {{.Datadir}}/mysql_sandbox{{.Port}}.pid
-bind-address       = {{.BindAddress}}
-{{.ReportHost}}
-{{.ReportPort}}
-log-error={{.Datadir}}/msandbox.err
-{{.ServerId}}
-{{.ReplOptions}}
-{{.GtidOptions}}
-{{.ReplCrashSafeOptions}}
-{{.SemiSyncOptions}}
-{{.ReadOnlyOptions}}
-
-{{.ExtraOptions}}
+# options here will be ignored.  See tidb.toml

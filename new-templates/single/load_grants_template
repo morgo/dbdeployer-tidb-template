@@ -4,6 +4,8 @@
 source {{.SandboxDir}}/sb_include
 export LD_LIBRARY_PATH=$CLIENT_LD_LIBRARY_PATH
 
+exit 0
+
 SOURCE_SCRIPT=$1
 if [ -z "$SOURCE_SCRIPT" ]
 then

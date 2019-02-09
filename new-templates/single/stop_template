@@ -6,21 +6,13 @@ export LD_LIBRARY_PATH=$CLIENT_LD_LIBRARY_PATH
 
 MYSQL_ADMIN="$CLIENT_BASEDIR/bin/mysqladmin"
 
-if [ -n "$(is_running)" ]
-then
-	echo "stop $SBDIR"
-	# echo "$MYSQL_ADMIN --defaults-file=$SBDIR/my.sandbox.cnf $MYCLIENT_OPTIONS shutdown"
-	$MYSQL_ADMIN --defaults-file=$SBDIR/my.sandbox.cnf $MYCLIENT_OPTIONS shutdown
-	sleep $SLEEP_TIME
-else
-	if [ -f $PIDFILE ]
-	then
-		rm -f $PIDFILE
-	fi
-fi
+# Ideally TiDB will support SHUTDOWN soon
+# and then the default template can be used!
+# https://github.com/pingcap/tidb/issues/5046
 
-if [ -n "$(is_running)" ]
+PID=`ps aux | grep tidb-server | grep -F '{{.SandboxDir}}' | awk '{print $2}'`
+
+if [ ! -z "$PID" ]
 then
-	# use the send_kill script if the server is not responsive
-	$SBDIR/send_kill
+	kill -9 $PID
 fi

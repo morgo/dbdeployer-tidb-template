@@ -22,11 +22,7 @@ export MYSQL_TEST_LOGIN_FILE=/tmp/dont_break_my_sandboxes$RANDOM
 
 function is_running
 {
-    if [ -f $PIDFILE ]
-    then
-        MYPID=$(cat $PIDFILE)
-        ps -p $MYPID | grep $MYPID
-    fi
+	lsof -Pi :{{.Port}} -sTCP:LISTEN -t >/dev/null
 }
 
 function check_output
